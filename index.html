@@ -1,0 +1,453 @@
+<!DOCTYPE html>
+<html lang="ko">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Suitable - 당신의 시작을 슈터블하게</title>
+    <style>
+        @import url('https://cdn.jsdelivr.net/gh/orioncactus/pretendard/dist/web/static/pretendard.css');
+
+        :root {
+            --navy: #1a2b4c;
+            --mint: #4cd9b0;
+            --white: #ffffff;
+            --gray-bg: #f5f5f5;
+            --text-dark: #333333;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Pretendard', sans-serif;
+        }
+
+        body {
+            background-color: var(--white);
+            color: var(--text-dark);
+            line-height: 1.6;
+        }
+
+        /* Container to simulate mobile width or detail page width */
+        .container {
+            max-width: 768px;
+            margin: 0 auto;
+            background: var(--white);
+            box-shadow: 0 0 20px rgba(0, 0, 0, 0.1);
+        }
+
+        /* Common Section Styles */
+        section {
+            padding: 60px 20px;
+            text-align: center;
+            border-bottom: 1px solid #eee;
+        }
+
+        section.no-padding {
+            padding: 0;
+        }
+
+        img {
+            max-width: 100%;
+            height: auto;
+            display: block;
+            margin: 0 auto;
+        }
+
+        h1,
+        h2,
+        h3 {
+            word-break: keep-all;
+        }
+
+        .highlight {
+            color: var(--mint);
+        }
+
+        .navy-text {
+            color: var(--navy);
+        }
+
+        /* Header / Logo */
+        header {
+            padding: 20px;
+            text-align: center;
+            background: var(--navy);
+        }
+
+        .logo-img {
+            max-width: 150px;
+        }
+
+        /* Hero Section */
+        .hero {
+            background-color: var(--navy);
+            color: var(--white);
+            padding-bottom: 0;
+        }
+
+        .hero h1 {
+            font-size: 2.2rem;
+            font-weight: 700;
+            margin-bottom: 10px;
+            line-height: 1.3;
+        }
+
+        .hero p {
+            font-size: 1.1rem;
+            opacity: 0.9;
+            margin-bottom: 30px;
+        }
+
+        .hero-img {
+            width: 100%;
+        }
+
+        /* Problem Section */
+        .problem {
+            background-color: #222;
+            color: var(--white);
+        }
+
+        .problem h2 {
+            font-size: 1.8rem;
+            margin-bottom: 20px;
+        }
+
+        .problem p {
+            color: #ccc;
+            margin-bottom: 30px;
+        }
+
+        /* Solution Section */
+        .solution {
+            background-color: var(--white);
+        }
+
+        .solution h2 {
+            color: var(--navy);
+            font-size: 2rem;
+            margin-bottom: 40px;
+        }
+
+        .features {
+            display: flex;
+            flex-direction: column;
+            gap: 20px;
+            margin-top: 30px;
+            text-align: left;
+            padding: 0 20px;
+        }
+
+        .feature-item {
+            background: var(--gray-bg);
+            padding: 20px;
+            border-radius: 10px;
+            border-left: 5px solid var(--mint);
+        }
+
+        .feature-item strong {
+            display: block;
+            font-size: 1.2rem;
+            color: var(--navy);
+            margin-bottom: 5px;
+        }
+
+        /* Detail Section */
+        .detail {
+            background-color: var(--gray-bg);
+        }
+
+        .detail h2 {
+            font-size: 1.8rem;
+            margin-bottom: 15px;
+        }
+
+        /* ESG Section */
+        .esg {
+            background-color: #e8f5e9;
+            /* Light green tint */
+        }
+
+        .esg h2 {
+            color: #2e7d32;
+            margin-bottom: 15px;
+        }
+
+        /* Pricing Section */
+        .pricing {
+            background: linear-gradient(135deg, var(--navy) 0%, #2a4475 100%);
+            color: var(--white);
+        }
+
+        .pricing-card {
+            background: var(--white);
+            color: var(--text-dark);
+            padding: 30px;
+            border-radius: 15px;
+            margin: 20px auto;
+            max-width: 400px;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
+        }
+
+        .price-row {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 15px;
+            border-bottom: 1px solid #eee;
+            padding-bottom: 15px;
+        }
+
+        .price-row:last-child {
+            border-bottom: none;
+        }
+
+        .price-name {
+            font-weight: bold;
+            font-size: 1.1rem;
+        }
+
+        .old-price {
+            text-decoration: line-through;
+            color: #999;
+            font-size: 0.9rem;
+            margin-right: 10px;
+        }
+
+        .new-price {
+            color: var(--navy);
+            font-weight: 800;
+            font-size: 1.3rem;
+        }
+
+        .discount-badge {
+            background: var(--mint);
+            color: var(--navy);
+            padding: 2px 6px;
+            border-radius: 4px;
+            font-size: 0.8rem;
+            font-weight: bold;
+            margin-left: 5px;
+        }
+
+        /* CTA Section */
+        .cta-section {
+            background-color: var(--mint);
+            padding: 80px 20px;
+        }
+
+        .cta-section h2 {
+            color: var(--navy);
+            font-size: 2.2rem;
+            margin-bottom: 30px;
+        }
+
+        .cta-button {
+            display: inline-block;
+            background-color: var(--navy);
+            color: var(--white);
+            font-size: 1.5rem;
+            font-weight: bold;
+            padding: 20px 60px;
+            border-radius: 50px;
+            text-decoration: none;
+            transition: transform 0.2s;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
+        }
+
+        .cta-button:hover {
+            transform: scale(1.05);
+        }
+    </style>
+</head>
+
+<body>
+
+    <div class="container">
+
+        <!-- Section 0: Logo -->
+        <header>
+            <img src="images/suitable_logo_1764731039386.png" alt="Suitable Logo" class="logo-img">
+        </header>
+
+        <!-- Section 1: Hero -->
+        <section class="hero">
+            <h1>당신의 시작이<br>완벽하게 <span class="highlight">'슈터블'</span>하도록.</h1>
+            <p>중요한 순간, 사지 말고 '슈터블'하세요.<br>프리미엄 정장 렌탈 서비스.</p>
+            <img src="images/suitable_hero_split_1764731054968.png" alt="Before and After" class="hero-img">
+        </section>
+
+        <!-- Section 2: Problem -->
+        <section class="problem">
+            <h2>딱 한 번 입을 정장,<br>30만원이 정말 '슈터블'한가요?</h2>
+            <p>면접, 결혼식, 졸업사진... 중요한 날은 다가오는데<br>통장 잔고는 부족하죠.<br>비싼 가격, 귀찮은 세탁, 유행 타는 디자인까지.<br>이제 부담스러운 구매 대신, 합리적인 선택을
+                할 때입니다.</p>
+            <img src="images/suitable_problem_receipt_1764731083124.png" alt="Expensive Receipt">
+        </section>
+
+        <!-- Section 3: Solution -->
+        <!-- Section 3: Solution -->
+        <section class="solution">
+            <h2>The Suitable Way<br><span class="navy-text">캠퍼스에서 바로 픽업하세요.</span></h2>
+
+            <!-- Pickup Station Image -->
+            <img src="images/PickUp.png" alt="Pickup Station" style="border-radius: 10px; margin-bottom: 30px;">
+
+            <div class="features">
+                <div class="feature-item">
+                    <strong>01. 슈터블 픽업 (Campus Pickup)</strong>
+                    학교 정문 픽업 스테이션에서 공강 시간에 바로 수령하세요.
+                </div>
+                <div class="feature-item">
+                    <strong>02. 슈터블 AI 핏 (AI Size Fit)</strong>
+                    사진 한 장이면 내 몸에 딱 맞는 사이즈를 추천해드려요.
+                </div>
+                <div class="feature-item">
+                    <strong>03. 슈터블 케어 (No Laundry)</strong>
+                    입은 그대로 반납하세요. 세탁과 관리는 저희가 합니다.
+                </div>
+            </div>
+        </section>
+
+        <!-- Section 4: Product Detail -->
+        <section class="detail">
+            <h2>첫인상을 결정하는 3초,<br>디테일이 다릅니다.</h2>
+            <p>이태리 고급 원단의 품격과 한국인 체형에 맞춘 완벽한 핏.<br>슈터블의 정장은 단순한 옷이 아닙니다. 당신의 자신감입니다.<br>전문가의 손길로 관리된 최상의 컨디션을 경험해보세요.
+            </p>
+            <br>
+            <img src="images/suitable_product_detail_1764731112920.png" alt="Suit Detail">
+        </section>
+
+        <!-- Section 5: ESG -->
+        <section class="esg">
+            <h2>Suitable for You,<br>Suitable for Earth.</h2>
+            <p>한 벌의 정장을 공유하면 소나무 10그루를 심는 효과가 있습니다.<br>당신의 합리적인 소비가 지구를 위한 가장 멋진 선택이 됩니다.<br>슈터블과 함께 지속 가능한 내일을 입으세요.
+            </p>
+            <br>
+            <img src="images/suitable_esg_value_1764731141276.png" alt="ESG Value">
+        </section>
+
+        <!-- Section 6: Pricing -->
+        <section class="pricing">
+            <h2>오직 얼리버드에게만<br>Super Early Bird Special</h2>
+
+            <!-- Category 1: Individual & Friends -->
+            <h3 style="color: var(--mint); margin: 40px 0 20px;">Individual & Friends</h3>
+
+            <!-- Couple Image (R2) -->
+            <img src="images/Couple.png" alt="Couple Image" style="border-radius: 10px; margin-bottom: 20px;">
+
+            <div class="pricing-card">
+                <div class="price-row">
+                    <div class="price-name">R0. 응원 리워드</div>
+                    <div>
+                        <span class="new-price">5,000원</span>
+                    </div>
+                </div>
+                <div class="price-row">
+                    <div class="price-name">R1. 평일 체험 1회</div>
+                    <div>
+                        <span class="old-price">45,000원</span>
+                        <span class="new-price">29,000원</span>
+                        <span class="discount-badge">36% OFF</span>
+                    </div>
+                </div>
+                <div class="price-row">
+                    <div class="price-name">R2. 슈퍼 얼리버드 1회</div>
+                    <div>
+                        <span class="old-price">45,000원</span>
+                        <span class="new-price">32,000원</span>
+                        <span class="discount-badge">29% OFF</span>
+                    </div>
+                </div>
+                <div class="price-row">
+                    <div class="price-name">R3. 얼리버드 1회</div>
+                    <div>
+                        <span class="old-price">45,000원</span>
+                        <span class="new-price">36,000원</span>
+                        <span class="discount-badge">20% OFF</span>
+                    </div>
+                </div>
+                <div class="price-row">
+                    <div class="price-name">R4. 일반 1회</div>
+                    <div>
+                        <span class="old-price">45,000원</span>
+                        <span class="new-price">39,000원</span>
+                        <span class="discount-badge">13% OFF</span>
+                    </div>
+                </div>
+                <div class="price-row">
+                    <div class="price-name">R5. 2회권 패키지</div>
+                    <div>
+                        <span class="old-price">85,000원</span>
+                        <span class="new-price">69,000원</span>
+                        <span class="discount-badge">19% OFF</span>
+                    </div>
+                </div>
+                <div class="price-row">
+                    <div class="price-name">R6. 커플/친구 2인 패키지</div>
+                    <div>
+                        <span class="old-price">90,000원</span>
+                        <span class="new-price">72,000원</span>
+                        <span class="discount-badge">20% OFF</span>
+                    </div>
+                </div>
+                <div class="price-row">
+                    <div class="price-name">R7. 3회권 + 스타일링</div>
+                    <div>
+                        <span class="old-price">120,000원</span>
+                        <span class="new-price">109,000원</span>
+                        <span class="discount-badge">10% OFF</span>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Category 2: Group Packages -->
+            <h3 style="color: var(--mint); margin: 40px 0 20px;">Group Packages</h3>
+
+            <!-- Group Image -->
+            <img src="images/Group.png" alt="Group Image" style="border-radius: 10px; margin-bottom: 20px;">
+
+            <div class="pricing-card">
+                <div class="price-row">
+                    <div class="price-name">R8. 학과/동아리 단체 (10인)</div>
+                    <div>
+                        <span class="old-price">450,000원</span>
+                        <span class="new-price">390,000원</span>
+                        <span class="discount-badge">13% OFF</span>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Category 3: VIP Campus Pass -->
+            <h3 style="color: #ffd700; margin: 40px 0 20px;">VIP Campus Pass</h3>
+
+            <!-- VIP Image -->
+            <img src="images/Vip.png" alt="VIP Card"
+                style="border-radius: 10px; margin-bottom: 20px; border: 1px solid #ffd700;">
+
+            <div class="pricing-card" style="border: 2px solid #ffd700;">
+                <div class="price-row">
+                    <div class="price-name">R9. VIP 캠퍼스 패스 (1학기)</div>
+                    <div>
+                        <span class="old-price">180,000원</span>
+                        <span class="new-price">159,000원</span>
+                        <span class="discount-badge">VIP Special</span>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Section 7: Outro CTA -->
+        <section class="cta-section">
+            <h2>당신의 새로운 시작,<br>슈터블하게.</h2>
+            <a href="#" class="cta-button">지금 바로 슈터블하기</a>
+        </section>
+
+    </div>
+
+</body>
+
+</html>
